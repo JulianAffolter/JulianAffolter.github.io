@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<title>Galerie</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css"/>
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+
+.w3-sidebar {width: 120px;background: #222;}
+
+.w3-black {background: #577399 !important;}
+
+.w3-text-light-grey {color: black !important;}
+.w3-content {background-color: #BDD5EA !important;}
+
+.text-left {float: left; width: 30%; margin-right: 40pt;}
+.image-left {float: left; width: 30%; margin-bottom: 20pt;}
+
+.footer {position: absolute; bottom: 0pt;}
+
+
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+/*CHANGES CSS*/
+.gal_row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.gal_column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.gal_column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .gal_column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .gal_column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.gal_modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 700px;
+  max-height: 85%;
+  width: auto;
+  height: auto;
+}
+
+.modal-content_quer {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 50%;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#modal_caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.modal_close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.modal_close:hover,
+.modal_close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+/*CHANGES CSS*/
+</style>
+
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <a href="../index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="journale.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-book w3-xxlarge"></i>
+    <p>Journale</p>
+  </a>
+  <a href="galerie.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black w3-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>Galerie</p>
+  </a>
+</nav>
+
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="../index.html" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="journale.html" class="w3-bar-item w3-button" style="width:25% !important">JOURNALE</a>
+    <a href="galerie.html" class="w3-bar-item w3-button" style="width:25% !important">GALERIE</a>
+  </div>
+</div>
+
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+  </header>
+
+  <div id="gal_modal" class="gal_modal" onclick="document.getElementById('gal_modal').style.display='none'">
+    <span class="modal_close" onclick="document.getElementById('gal_modal').style.display='none'">&times;</span>
+    <img class="" id="modal_image" src="">
+    <div id="modal_caption">TEST CAPTION</div>
+  </div>
+<div class="gal_row" id="gallery">
+  <div class="gal_column">
+    <img src="../media/Anastasia_style.jpg" alt="Digital APR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/old_guy_head.jpg" alt="Digital MAR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/dinosaur_bones.jpg"  alt="Digital MAR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/metroid_dread.jpg" alt="Digital JUN 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+      <img src="../media/leute_bearbeitet.jpg" alt="Paar im Rosengarten" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/marzipan.jpg" alt="Gouache & Wasserfarbe JAN 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/sam_suit.jpg" alt="Digital MAR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/collage.jpg" alt="Collage von allen SUIT Bildern - MAR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/Monkey_Tigers.jpg" alt="Kugelschreiber & Farbstifte APR 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/lion_drawing.jpg" alt="Digital JUN 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/sketchbooks.jpg" alt="Collage Skizzenbücher JUN 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+       <img src="../media/klein_vogel.jpg" alt="Vögel" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/mermaid.jpg" alt="Schwarzer Filzstift JUN 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/melon_apple.jpg" alt="Bleistift OCT 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/za_hando.jpg" alt="Kugelschreiber & Farbstifte FEB 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/self_portrait.jpg" alt="Bleistift & Acryl JUN 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/flower_cigarette.jpg" alt="Acryl DEZ 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+  </div>
+
+  <div class="gal_column">
+    <img src="../media/suit_bois.jpg" alt="Digital MAR 2021 - benutzt für das GIF in Animieren" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/Portrait_shards.jpg" alt="Weisser Bleistift MAI 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+      <img src="../media/klein_stier.jpg" alt="Stier Rosengarten" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/Julia.jpg" alt="Farbstifte NOV 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/rose.jpg" alt="Acryl MAR 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/objects.jpg" alt="Gouache auf Holz MAI 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/anastasia.jpg" alt="Kugelschreiber & Farbstifte AUG 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/papageien_taucher.jpg" alt="Farbstifte JUL 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/cat_news.jpg" alt="Kugelschreiber & Wasserfarbe FEB 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+      <img src="../media/klein_finger.jpg" alt="Gebäude " onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');"> 
+    <img src="../media/horse.jpg" alt="Kohle MAI 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/tiger.jpg" alt="Kugelschreiber & Farbstift APR 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/Chrämi.jpg" alt="Bleistift DEZ 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+      <img src="../media/nachbarschaft_bearbeitet.jpg" alt="Gebäudeblock" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+      <img src="../media/portrait_man.jpg" alt="Acryl JUN 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+  <img src="../media/self_portratits_bob.jpg" alt="Kugelschreiber DEZ 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+      </div>
+
+  <div class="gal_column">
+    <img src="../media/ausflug.jpg" alt="Kugelschreiber JUN 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/panda_plush.jpg" alt="Acryl JAN 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+      <img src="../media/klein_seerose.jpg" alt="Seerose Rosengarten" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/spontifest.jpg" alt="Bleistift APR 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/robot_woman.jpg" alt="Filzstifte JAN 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/Wasserflyer_ Langenthal.jpg" alt="Flyer 2015" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/wasserflyer_ rückseite.jpg" alt="Flyer 2015" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+       <img src="../media/klein_post.jpg" alt="PostFinance Gebäude" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/froggos.jpg" alt="Farbstifte & Wasserfarben APR 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/halloween_flyer.jpg" alt="Acryl OCT 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/head_flower.jpg" alt="Farbstifte FEB 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+   <img src="../media/Tiger_Full.jpg" alt="Digital MAR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/Wolf_done.jpg" alt="Digital APR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/flower_filter.jpg" alt="Acryl APR 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/bern.jpg" alt="Digital APR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">  
+    <img src="../media/drip_head.jpg" alt="Digital APR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">  
+  </div>
+
+  <div class="gal_column">
+    <img src="../media/england_reise.jpg" alt="Kugelschreiber & Wasserfarbe SEP 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/pillow.jpg"  alt="Kohle JUN 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/colin_suit.jpg" alt="Digital MAR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+       <img src="../media/klein_wasser.jpg" alt="Figur im Rosengarten" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/momo.jpg" alt="Digital JAN 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/penguins.jpg" alt="Kugelschreiber & Farbstift JAN 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/sheik_eyes.jpg" alt="Digital DEZ 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/cheetah_ink.jpg" alt="Digital MAR 2021" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/hand.jpg" alt="Filzstift MAR 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+      <img src="../media/klein_blume.jpg" alt="Blume im Rosengarten Bern" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/miles.jpg" alt="Acryl & Filzstifte SEP 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/cat_girl.jpg" alt="Farbstift MAR 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/mecha_head.jpg" alt="Weisser Farbstift DEZ 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/plant.jpg" alt="Farbstift & Filzstift SEP 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/woman_face.jpg" alt="Acryl & Kohle JAN 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+    <img src="../media/rhino.jpg" alt="Kohle APR 2019" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    <img src="../media/panda_head.jpg" alt="Farbstift MAR 2020" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content');">
+       <img src="../media/klein_schwarz.jpg" alt="Moderne Häuser" onclick="document.getElementById('modal_image').src=this.src; document.getElementById('modal_caption').innerHTML=this.alt; document.getElementById('gal_modal').style.display='block'; document.getElementById('modal_image').classList.remove('modal-content_quer'); document.getElementById('modal_image').classList.remove('modal-content'); document.getElementById('modal_image').classList.add('modal-content_quer');">
+    
+    
+    
+
+  </div>
+  </div>
+</div>
+  
+  <!-- End About Section -->
+  </div>
+
+    </div>
+  <!-- End Portfolio Section -->
+    
+  </div>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
